@@ -63,7 +63,12 @@ const getNewUsers = async () => {
  */
 const fetchWithLog = async (url) => {
   try {
-    const res = await fetch(url)
+    const res = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${proess.env.MERKLE_HUB_KEY}`
+      },
+    })
     if (!res.ok) {
       console.warn(`Could not fetch ${url}: ${res.statusText}`)
       return null
