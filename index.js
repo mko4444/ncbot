@@ -76,9 +76,10 @@ const fetchWithLog = async (url) => {
 }
 
 const getCasts = async (fid, cursor) => {
-  return await fetchWithLog(
-    `https://api.farcaster.xyz/v2/casts?fid=${fid}&cursor=${cursor}`
-  )
+  const url = cursor 
+    ? `https://api.farcaster.xyz/v2/casts?fid=${fid}&cursor=${cursor}` 
+    : `https://api.farcaster.xyz/v2/casts?fid=${fid}`
+  return await fetchWithLog(url)
 }
 
 const getLatestSequenceRecastedPerAddress = async () => {
